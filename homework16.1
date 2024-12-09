@@ -1,0 +1,31 @@
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        try
+        {
+            Console.Write("Введіть шлях до вихідного файлу: ");
+            string inputPath = Console.ReadLine();
+
+            Console.Write("Введіть шлях до файлу, в який потрібно скопіювати дані: ");
+            string outputPath = Console.ReadLine();
+
+            if (!File.Exists(inputPath))
+            {
+                Console.WriteLine("Вихідний файл не знайдено.");
+                return;
+            }
+
+            File.Copy(inputPath, outputPath, overwrite: true);
+
+            Console.WriteLine("Файл успішно скопійовано!");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Сталася помилка: " + ex.Message);
+        }
+    }
+}
